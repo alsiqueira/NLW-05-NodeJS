@@ -3,7 +3,7 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } fro
 import { v4 as uuid} from "uuid"
 
 
-@Entity('Setting')
+@Entity('settings')
 class Setting {
 
   @PrimaryColumn()
