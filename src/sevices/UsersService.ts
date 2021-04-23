@@ -13,8 +13,8 @@ private usersRepository: Repository<User>
 constructor(){
   this.usersRepository = getCustomRepository(UsersRepository)
 }
-  async create({email}: IUsersCreate){
-    
+  async create(email: string){
+    console.log(email)
 
     const userAlreadyExists = await this.usersRepository.findOne({email})
     if(userAlreadyExists){
@@ -22,10 +22,20 @@ constructor(){
     }
 
     const users = this.usersRepository.create({email})
-
+    
     await this.usersRepository.save(users)
     return users
   }
+
+  async findByEmail(email: string) {
+    
+      const user = await this.usersRepository.findOne({ 
+        email
+       });
+    
+      return user;
+    
+    }
 }
 
 export {UsersService}
